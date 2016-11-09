@@ -1,4 +1,4 @@
-package com.taobao.pamirs.schedule.test;
+package demo.tbs;
 
 import com.taobao.pamirs.schedule.strategy.ScheduleStrategy;
 import com.taobao.pamirs.schedule.strategy.TBScheduleManagerFactory;
@@ -10,9 +10,12 @@ import org.unitils.UnitilsJUnit4;
 import org.unitils.spring.annotation.SpringApplicationContext;
 import org.unitils.spring.annotation.SpringBeanByName;
 
+/**
+ * Created by tianyi on 2016/11/8.
+ */
 @SpringApplicationContext({"schedule.xml"})
-public class InitialDemoConfigData extends UnitilsJUnit4 {
-  protected static transient Logger log = LoggerFactory.getLogger(InitialDemoConfigData.class);
+public class DemoTest extends UnitilsJUnit4 {
+  protected static transient Logger log = LoggerFactory.getLogger(DemoTest.class);
   @SpringBeanByName
   TBScheduleManagerFactory scheduleManagerFactory;
 
@@ -22,8 +25,24 @@ public class InitialDemoConfigData extends UnitilsJUnit4 {
   }
 
   @Test
-  public void initialConfigData() throws Exception {
+  public void delTask() throws Exception {
     String baseTaskTypeName = "DemoTask";
+    while (this.scheduleManagerFactory.isZookeeperInitialSucess() == false) {
+      Thread.sleep(1000);
+    }
+    scheduleManagerFactory.stopServer(null);
+    Thread.sleep(1000);
+    try {
+      this.scheduleManagerFactory.getScheduleDataManager().deleteTaskType(baseTaskTypeName);
+      log.info("删除调度任务成功:" + baseTaskTypeName);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  @Test
+  public void addTask() throws Exception {
+    String baseTaskTypeName = "demo0TaskType";
     while (this.scheduleManagerFactory.isZookeeperInitialSucess() == false) {
       Thread.sleep(1000);
     }
@@ -34,19 +53,17 @@ public class InitialDemoConfigData extends UnitilsJUnit4 {
     } catch (Exception e) {
       e.printStackTrace();
     }
+
     // 创建任务调度DemoTask的基本信息
     ScheduleTaskType baseTaskType = new ScheduleTaskType();
     baseTaskType.setBaseTaskType(baseTaskTypeName);
-    baseTaskType.setDealBeanName("demoTaskBean");
+    baseTaskType.setDealBeanName("demo0TaskSingle");
     baseTaskType.setHeartBeatRate(2000);
     baseTaskType.setJudgeDeadInterval(10000);
     baseTaskType.setPermitRunStartTime("0 * * * * ?");
     baseTaskType.setPermitRunEndTime("7 * * * * ?");
-    baseTaskType.setTaskParameter("AREA=杭州,YEAR>30");
-    baseTaskType.setTaskItems(ScheduleTaskType.splitTaskItem(
-        "0:{TYPE=A,KIND=1},1:{TYPE=A,KIND=2},2:{TYPE=A,KIND=3},3:{TYPE=A,KIND=4}," +
-            "4:{TYPE=A,KIND=5},5:{TYPE=A,KIND=6},6:{TYPE=A,KIND=7},7:{TYPE=A,KIND=8}," +
-            "8:{TYPE=A,KIND=9},9:{TYPE=A,KIND=10}"));
+    baseTaskType.setTaskParameter("TaskParameter");
+    baseTaskType.setTaskItems(new String[]{"item_aaa", "item_bbb", "item_ccc"});
     this.scheduleManagerFactory.getScheduleDataManager().createBaseTaskType(baseTaskType);
     log.info("创建调度任务成功:" + baseTaskType.toString());
 
@@ -54,8 +71,7 @@ public class InitialDemoConfigData extends UnitilsJUnit4 {
     String taskName = baseTaskTypeName + "$TEST";
     String strategyName = baseTaskTypeName + "-Strategy";
     try {
-      this.scheduleManagerFactory.getScheduleStrategyManager()
-          .deleteMachineStrategy(strategyName, true);
+      this.scheduleManagerFactory.getScheduleStrategyManager().deleteMachineStrategy(strategyName, true);
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -63,14 +79,18 @@ public class InitialDemoConfigData extends UnitilsJUnit4 {
     strategy.setStrategyName(strategyName);
     strategy.setKind(ScheduleStrategy.Kind.Schedule);
     strategy.setTaskName(taskName);
-    strategy.setTaskParameter("中国");
+    strategy.setTaskParameter("Strategy - TaskParameter");
 
     strategy.setNumOfSingleServer(1);
     strategy.setAssignNum(10);
     strategy.setIPList("127.0.0.1".split(","));
-    this.scheduleManagerFactory.getScheduleStrategyManager()
-        .createScheduleStrategy(strategy);
+    this.scheduleManagerFactory.getScheduleStrategyManager().createScheduleStrategy(strategy);
     log.info("创建调度策略成功:" + strategy.toString());
+  }
 
+
+  @Test
+  public void testRunData() throws Exception {
+    Thread.sleep(10000L);
   }
 }
