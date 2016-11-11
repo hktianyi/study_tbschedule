@@ -3,6 +3,7 @@
 <beans default-autowire="byName">
     <bean id="demoTaskBean" class="com.taobao.pamirs.schedule.test.DemoTaskBean"/>
     <bean id="demo0TaskSingle" class="demo.tbs.Demo0TaskSingle"/>
+    <bean id="demo1TaskBean" class="demo.tbs.Demo1TaskBean"/>
     <bean id="scheduleManagerFactory" class="com.taobao.pamirs.schedule.strategy.TBScheduleManagerFactory"
           init-method="init">
         <property name="zkConfig">

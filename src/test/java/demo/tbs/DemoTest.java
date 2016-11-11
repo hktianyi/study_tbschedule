@@ -61,7 +61,7 @@ public class DemoTest extends UnitilsJUnit4 {
     baseTaskType.setHeartBeatRate(2000);
     baseTaskType.setJudgeDeadInterval(10000);
     baseTaskType.setPermitRunStartTime("0 * * * * ?");
-    baseTaskType.setPermitRunEndTime("7 * * * * ?");
+//    baseTaskType.setPermitRunEndTime("7 * * * * ?");
     baseTaskType.setTaskParameter("TaskParameter");
     baseTaskType.setTaskItems(new String[]{"item_aaa", "item_bbb", "item_ccc"});
     this.scheduleManagerFactory.getScheduleDataManager().createBaseTaskType(baseTaskType);
@@ -91,6 +91,6 @@ public class DemoTest extends UnitilsJUnit4 {
 
   @Test
   public void testRunData() throws Exception {
-    Thread.sleep(10000L);
+    Thread.sleep(120000000L);
   }
 }

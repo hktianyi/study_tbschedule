@@ -184,8 +184,7 @@ public class TBScheduleManagerFactory implements ApplicationContextAware {
         }
       } else if (stsInfo.isStart() == false) {
         stopServer(null); // 停止所有的调度任务
-        this.getScheduleStrategyManager().unRregisterManagerFactory(
-            this);
+        this.getScheduleStrategyManager().unRregisterManagerFactory(this);
       } else {
         reRegisterManagerFactory();
       }
@@ -221,8 +220,7 @@ public class TBScheduleManagerFactory implements ApplicationContextAware {
       for (int i = 0; i < factoryList.size(); i++) {
         ScheduleStrategyRunntime factory = factoryList.get(i);
         //更新请求的服务器数量
-        this.scheduleStrategyManager.updateStrategyRunntimeReqestNum(run.getStrategyName(),
-            factory.getUuid(), nums[i]);
+        this.scheduleStrategyManager.updateStrategyRunntimeReqestNum(run.getStrategyName(), factory.getUuid(), nums[i]);
       }
     }
   }
