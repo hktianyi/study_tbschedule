@@ -88,8 +88,7 @@
         if (managerFactoryUUID != null && managerFactoryUUID.trim().length() > 0) {
             serverList = ConsoleManager.getScheduleDataManager().selectScheduleServerByManagerFactoryUUID(managerFactoryUUID);
         } else {
-            serverList = ConsoleManager.getScheduleDataManager()
-                    .selectScheduleServer(baseTaskType, ownSign, ip, orderStr);
+            serverList = ConsoleManager.getScheduleDataManager().selectScheduleServer(baseTaskType, ownSign, ip, orderStr);
         }
 
         for (int j = 0; j < serverList.size(); j++) {

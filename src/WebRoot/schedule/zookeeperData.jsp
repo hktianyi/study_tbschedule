@@ -14,8 +14,7 @@
         path = ConsoleManager.getScheduleStrategyManager().getRootPath();
     }
     StringWriter writer = new StringWriter();
-    ConsoleManager.getScheduleStrategyManager().printTree(
-            path, writer, "<br/>");
+    ConsoleManager.getScheduleStrategyManager().printTree(path, writer, "<br/>");
 %>
 <pre>
 <%=writer.getBuffer().toString()%>

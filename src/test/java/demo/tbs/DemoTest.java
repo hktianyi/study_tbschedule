@@ -19,8 +19,7 @@ public class DemoTest extends UnitilsJUnit4 {
   @SpringBeanByName
   TBScheduleManagerFactory scheduleManagerFactory;
 
-  public void setScheduleManagerFactory(
-      TBScheduleManagerFactory tbScheduleManagerFactory) {
+  public void setScheduleManagerFactory(TBScheduleManagerFactory tbScheduleManagerFactory) {
     this.scheduleManagerFactory = tbScheduleManagerFactory;
   }
 

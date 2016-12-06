@@ -8,11 +8,11 @@
           init-method="init">
         <property name="zkConfig">
             <map>
-                <entry key="zkConnectString" value="101.200.73.127:2181"/>
-                <entry key="rootPath" value="/taobao-pamirs-schedule/huijin"/>
+                <entry key="zkConnectString" value="127.0.0.1:2181"/>
+                <entry key="rootPath" value="/taobao-pamirs-schedule/qianbao"/>
                 <entry key="zkSessionTimeout" value="60000"/>
-                <entry key="userName" value="admin"/>
-                <entry key="password" value="tttttt"/>
+                <entry key="userName" value=""/>
+                <entry key="password" value=""/>
                 <entry key="isCheckParentPath" value="true"/>
             </map>
         </property>

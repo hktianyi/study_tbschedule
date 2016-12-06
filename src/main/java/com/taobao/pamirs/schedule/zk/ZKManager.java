@@ -118,7 +118,7 @@ public class ZKManager {
   public static Properties createProperties() {
     Properties result = new Properties();
     result.setProperty(keys.zkConnectString.toString(), "localhost:2181");
-    result.setProperty(keys.rootPath.toString(), "/taobao-pamirs-schedule/huijin");
+    result.setProperty(keys.rootPath.toString(), "/taobao-pamirs-schedule/qianbao");
     result.setProperty(keys.userName.toString(), "ScheduleAdmin");
     result.setProperty(keys.password.toString(), "password");
     result.setProperty(keys.zkSessionTimeout.toString(), "60000");
