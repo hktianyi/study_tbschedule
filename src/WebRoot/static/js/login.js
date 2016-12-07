@@ -121,7 +121,7 @@ var Login = function () {
     });
 
     jQuery('#forget-password').click(function () {
-      alert('请联系管理员');
+      layer ? layer.alert('请联系管理员') : alert('请联系管理员');
       // jQuery('.login-form').hide();
       // jQuery('.forget-form').show();
     });

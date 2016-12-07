@@ -16,7 +16,7 @@
             <i class="fa fa-angle-right"></i>
           </li>
           <li>
-            处理线程组列表
+            机器列表
           </li>
         </ul>
       </div>

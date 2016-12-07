@@ -4,7 +4,7 @@
 <head>
   <%@include file="/WEB-INF/common/common.jsp" %>
   <link href="${_PATH}/static/css/login.min.css?${_VERSION}" rel="stylesheet" type="text/css"/>
-  <style>.page-footer{display: none !important;}</style>
+  <style>.page-footer { display: none !important; }</style>
 </head>
 <body class="login">
 <div id="parallax">
@@ -36,7 +36,7 @@
         <button type="submit" class="btn green uppercase">登录</button>
         <label class="rememberme check">
           <input type="checkbox" name="remember" value="1"/>记住我 </label>
-        <a href="javascript:alert('请联系管理员');" id="forget-password" class="forget-password">忘记密码?</a>
+        <a href="javascript:;" id="forget-password" class="forget-password">忘记密码?</a>
       </div>
     </form>
     <!-- END LOGIN FORM -->

@@ -16,7 +16,7 @@
           <ul class="dropdown-menu pull-left">
             <li class="<%=request.getParameter("menu").endsWith("zkConn") ? "active" : ""%>"><a href="${_PATH}/config/zkConn"><i class="fa fa-tachometer"></i> Zookeeper连接配置 </a></li>
             <li class="<%=request.getParameter("menu").endsWith("zkData") ? "active" : ""%>"><a href="${_PATH}/config/zkData"><i class="fa fa-camera"></i> Zookeeper数据 </a></li>
-            <li class="<%=request.getParameter("menu").endsWith("export") ? "active" : ""%>"><a href="${_PATH}/config/export"><i class="fa fa-eye"></i> Export配置数据 </a></li>
+            <%--<li class="<%=request.getParameter("menu").endsWith("export") ? "active" : ""%>"><a href="${_PATH}/config/export"><i class="fa fa-eye"></i> Export配置数据 </a></li>--%>
           </ul>
         </li>
       </ul>
@@ -31,10 +31,6 @@
             <i class="fa fa-angle-down"></i>
           </a>
           <ul class="dropdown-menu">
-            <li>
-              <a href="${_PATH}/sysUser/profile">
-                <i class="fa fa-user"></i> 个人中心 </a>
-            </li>
             <li>
               <a href="${_PATH}/logout.html">
                 <i class="icon-power"></i> 退出 </a>
